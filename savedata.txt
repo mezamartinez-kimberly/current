@@ -1,0 +1,29 @@
+bool PriorityArrayQueue<ItemType>::enqueue(const ItemType& newEntry){
+    if(froInd == 0 && backInd == DEFAULT_CAPACITY - 1){
+        cout << "Queue is full" << endl;
+        return false;
+    }
+    if(froInd == -1 && backInd == -1){ //checks if nothing is in 
+        froInd++;
+        backInd++;
+        items[backInd] = newEntry;
+        return true;
+    }else{ //compare elements to check priority 
+        froInd = 0;
+        int i = backInd;
+        backInd++;
+        items[backInd] =  newEntry;
+        for(backInd; i != 0; i--){
+            if(newEntry == items[backInd] || newEntry > items[backInd]){
+                backInd++;
+                items[backInd] = newEntry;
+            }if(items[backInd] < items[i -1]){
+                while(newEntry < items[backInd]){
+                   //switch items
+                }
+            }
+        }
+        itemCount++;
+        return true;
+    }
+}
